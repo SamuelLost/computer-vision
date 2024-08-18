@@ -84,11 +84,10 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D BUILD_TIFF=ON \
 -D PYTHON3_EXECUTABLE=$(which python) \
 -D OPENCV_GENERATE_PKGCONFIG=ON \
--D INSTALL_C_EXAMPLES=ON \
--D PYTHON3_PACKAGES_PATH=$(python -c "import sysconfig; print(sysconfig.get_path('purelib'))") \
 -D BUILD_EXAMPLES=ON \
 -D INSTALL_C_EXAMPLES=ON \
 -D INSTALL_PYTHON_EXAMPLES=ON \
+-D PYTHON3_PACKAGES_PATH=$(python -c "import sysconfig; print(sysconfig.get_path('purelib'))") \
 -D PYTHON_DEFAULT_EXECUTABLE=$(which python) ..
 ```
 
