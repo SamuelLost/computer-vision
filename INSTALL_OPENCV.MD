@@ -65,7 +65,7 @@ mkdir build && cd build
 Para configurar o OpenCV, execute o comando abaixo. Note que a opção `OPENCV_ENABLE_NONFREE` está habilitada e o caminho para o diretório do opencv_contrib foi passado como argumento para a opção `OPENCV_EXTRA_MODULES_PATH`.
 
 > [!IMPORTANT]
-> Garanta que o binário do Python que você está utilizando é o mesmo que você deseja utilizar com o OpenCV. Estou utilizando o link simbólico `python` para o `python3` na versão 3.10.12. Se você não tem um link simbólico para o `python3`, você pode criar um link simbólico para o `python3` com o comando `sudo ln -s $(which python3) /usr/bin/python`. Ou apenas substitua `python` por `python3` no comando abaixo.
+> Garanta que o binário do Python que você está utilizando é o mesmo que você deseja utilizar com o OpenCV. Estou utilizando o link simbólico `python` para o `python3` na versão 3.10.12. Se você não tem um link simbólico para o `python3`, você pode criar com o comando `sudo ln -s $(which python3) /usr/bin/python`. Caso não queira, apenas substitua `python` por `python3` no comando abaixo.
 
 ```bash
 cmake -D CMAKE_BUILD_TYPE=RELEASE \
@@ -92,7 +92,7 @@ cmake -D CMAKE_BUILD_TYPE=RELEASE \
 -D PYTHON_DEFAULT_EXECUTABLE=$(which python) ..
 ```
 
-Copie, cole e execute o comando acima para configurar a compilação do OpenCV. O argumento `..` no final do comando acima é necessário para que o cmake possa encontrar o arquivo `CMakeLists.txt` principal presente no diretório anterior (`~/opencv_build/opencv/`).
+Copie, cole e execute o comando acima para configurar a compilação do OpenCV. O argumento `..` no final do comando acima é necessário para que o CMake possa encontrar o arquivo `CMakeLists.txt` principal presente no diretório anterior (`~/opencv_build/opencv/`).
 
 ### 4.2. Compile e instale o OpenCV
 
@@ -130,7 +130,7 @@ pkg-config --modversion opencv4 # Saída esperada: 4.10.0
 python -c "import cv2; print(cv2.__version__)" # Saída esperada: 4.10.0
 ```
 
-Se você obteve a saída esperada para ambos os comandos, o OpenCV foi compilado e instalado corretamente no seu sistema. Agora você pode utilizar o módulo `xfeatures2d` para utilizar os algoritmos SURF e BRIEF.
+Se você obteve a saída esperada para ambos os comandos, o OpenCV foi compilado e instalado corretamente no seu sistema. Agora você acesso ao módulo `xfeatures2d` para utilizar os algoritmos SURF e BRIEF.
 
 ## Referências
 
