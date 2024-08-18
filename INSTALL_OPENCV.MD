@@ -129,7 +129,7 @@ pkg-config --modversion opencv4 # Saída esperada: 4.10.0
 python -c "import cv2; print(cv2.__version__)" # Saída esperada: 4.10.0
 ```
 
-Se você obteve a saída esperada para ambos os comandos, o OpenCV foi compilado e instalado corretamente no seu sistema. Agora você acesso ao módulo `xfeatures2d` para utilizar os algoritmos SURF e BRIEF.
+Se você obteve a saída esperada para ambos os comandos, o OpenCV foi compilado e instalado corretamente no seu sistema. Agora você tem acesso ao módulo `xfeatures2d` para utilizar os algoritmos SURF e BRIEF.
 
 ## Referências
 
