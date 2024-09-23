@@ -131,6 +131,20 @@ python -c "import cv2; print(cv2.__version__)" # Saída esperada: 4.10.0
 
 Se você obteve a saída esperada para ambos os comandos, o OpenCV foi compilado e instalado corretamente no seu sistema. Agora você tem acesso ao módulo `xfeatures2d` para utilizar os algoritmos SURF e BRIEF.
 
+## Troubleshooting
+
+### Evite conflitos com o OpenCV instalado via `pip`
+
+Ao instalar outros pacotes Python que dependem do OpenCV, o `pip` pode instalar uma versão do OpenCV que não foi compilada com o suporte ao `opencv_contrib`. Para evitar conflitos, você pode copiar o diretório `cv2` do OpenCV compilado para o diretório de pacotes Python do seu sistema.
+
+```bash
+pip uninstall opencv-python # Desinstala o OpenCV instalado via pip
+
+cp -r /usr/local/lib/python3.10/dist-packages/cv2 ~/.local/lib/python3.10/site-packages # Copia o diretório cv2 para o diretório de pacotes Python do seu usuário
+```
+
+Com isso, você garante que o OpenCV compilado com o suporte ao `opencv_contrib` será utilizado por padrão.
+
 ## Referências
 
 [Using CMake to build and install OpenCV for Python and C++ in Ubuntu 20.04](https://rodosingh.medium.com/using-cmake-to-build-and-install-opencv-for-python-and-c-in-ubuntu-20-04-6c5881eebd9a)
