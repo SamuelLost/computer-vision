@@ -17,7 +17,7 @@ def match_images(im1,im2,kp1,kp2,des1,des2, n_show = 20, use_knn=False):
 		matches = sorted(matches, key=lambda x: x.distance)
 
 		# Draw first matches.
-		img_match = cv2.drawMatches(img1, kp1, img2, kp2, matches[:n_show], None,
+		img_match = cv2.drawMatches(im1, kp1, im2, kp2, matches[:n_show], None,
 								   flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 
 	else:
@@ -28,7 +28,7 @@ def match_images(im1,im2,kp1,kp2,des1,des2, n_show = 20, use_knn=False):
 			if m.distance < 0.75 * n.distance:
 				good.append([m])
 
-		img_match = cv2.drawMatchesKnn(img1, kp1, img2, kp2, good[:n_show], None,
+		img_match = cv2.drawMatchesKnn(im1, kp1, im2, kp2, good[:n_show], None,
 									  flags=cv2.DrawMatchesFlags_NOT_DRAW_SINGLE_POINTS)
 
 	return img_match
@@ -70,18 +70,17 @@ def bf_brief(im1,im2, n_show=20, use_knn=False):
 	"""
 
 	# Initiate FAST detector
-	star = cv2.xfeatures2d.StarDetector_create()
-
+	fast = cv2.FastFeatureDetector_create()
 	# Initiate BRIEF extractor
 	brief = cv2.xfeatures2d.BriefDescriptorExtractor_create()
 
-	# find the keypoints with STAR
-	kp1 = star.detect(im1,None)
+	# find the keypoints with FAST
+	kp1 = fast.detect(im1,None)
 
 	# compute the descriptors with BRIEF
 	kp1, des1 = brief.compute(im1, kp1)
 
-	kp2 = star.detect(im2,None)
+	kp2 = fast.detect(im2,None)
 	kp2, des2 = brief.compute(im2, kp2)
 
 	return match_images(im1,im2,kp1,kp2,des1,des2, n_show =n_show, use_knn=use_knn)
@@ -115,7 +114,7 @@ im_brief = bf_brief(img1,img2,use_knn=True)
 plt.subplot(221).set_ylabel("SIFT"), plt.imshow(im_sift,'gray') #imagem original
 plt.subplot(222).set_ylabel("ORB"), plt.imshow(im_orb,'gray') #imagem original
 plt.subplot(223).set_ylabel("SURF"), plt.imshow(im_surf,'gray') #imagem original
-plt.subplot(224).set_ylabel("BRIEF"), plt.imshow(im_surf,'gray') #imagem original
+plt.subplot(224).set_ylabel("BRIEF"), plt.imshow(im_brief,'gray') #imagem original
 
 plt.tight_layout()
 
