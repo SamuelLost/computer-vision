@@ -11,7 +11,7 @@ def calculate_energy(image, orientation, mask=None):
 
     Parâmetros:
     - image: Imagem de entrada (em RGB).
-    - orientation: Pode ser 'horizontal', 'vertical' ou 'both' para calcular a energia.
+    - orientation: Pode ser 'horizontal', 'vertical' para calcular a energia.
     - mask: Máscara opcional para diminuir a energia em certas regiões.
     Retorno:
     - energy: O mapa de energia da imagem.
@@ -25,13 +25,8 @@ def calculate_energy(image, orientation, mask=None):
     elif orientation == 'horizontal':
         # Sobel vertical detecta bordas horizontais (mudanças no eixo X)
         energy = np.abs(filters.sobel_v(gray_image))
-    elif orientation == 'both':
-        # Combinação de gradientes horizontais e verticais
-        sobel_h = np.abs(filters.sobel_h(gray_image))
-        sobel_v = np.abs(filters.sobel_v(gray_image))
-        energy = sobel_h + sobel_v
     else:
-        raise ValueError("Orientation must be 'horizontal', 'vertical', or 'both'")
+        raise ValueError("Orientation must be 'horizontal', 'vertical'")
     
     # Diminuir a energia dentro da máscara
     if mask is not None:
