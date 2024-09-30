@@ -6,7 +6,7 @@ from cv_utils import waitKey
 
 # Deixar a imagem jato.jpg mais amarela com correção de gamma
 
-def gamma_correction(img, gamma,c=1.0):
+def gamma_correction(img, gamma, c=1.0):
     i = 255*(c*(img/255.0)**(1.0 / gamma))
     return i
 
@@ -29,4 +29,6 @@ im_amarelada = gamma_correction_yellow(im, 0.5)
 cv2.imwrite('jato_resultado.jpg', im_amarelada)
 
 cv2.imshow('Jato Amarelado',im_amarelada)
-waitKey('Jato Amarelado', 27) #27 = ESC
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+# waitKey('Jato Amarelado', 27) #27 = ESC

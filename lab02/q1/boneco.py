@@ -1,7 +1,7 @@
 import sys
 import cv2
 import numpy as np
-import cv_utils as waitKey
+from cv_utils import waitKey
 
 # Lab 2 - Questão 2 -
 # Utilizando como base as figuras ‘circle.jpg’ e ‘line.jpg’, forme o desenho de um “boneco
@@ -96,4 +96,5 @@ img = cv2.bitwise_and(img, right_leg) # Cabeça, tronco, braço esquerdo, braço
 cv2.imwrite('boneco_resultado.jpg', img)
 
 cv2.imshow('Boneco de Palito', img)
-waitKey.waitKey('Boneco de Palito', 27)  # 27 = ESC
+cv2.waitKey(0)
+cv2.destroyAllWindows()
